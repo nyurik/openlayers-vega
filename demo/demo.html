@@ -25,10 +25,23 @@
 
   /*
 
-  Create Vega graph, and once it is done loading (runAsync),
-  copy the Vega canvas to the OpenLayers ImageCanvas
+Explanation:
 
-   */
+  Create unattached div, and create a Vega graph in it.
+  Once the graph is done loading (runAsync),
+  create image layer which uses unattached div's canvas as the source.
+
+  Override Vega's View.Render() method to detect that graph is no longer valid,
+  and invalidate the OL's layer with the .changed() call, which in turn
+  will request the new copy of canvas.
+  
+  Attach all event handlers to the map DOM object, and forward them to the Vega graph.
+
+  TODO / Unkonwns:
+    * Instead of Map DOM events, we should forward just the events from the image layer.
+      This way, clicks on the map zoom buttons and attribution control are not be captured or forwarded.
+   
+ */
 
   (function () {
 
