@@ -40,7 +40,9 @@ Explanation:
   TODO / Unkonwns:
     * Instead of Map DOM events, we should forward just the events from the image layer.
       This way, clicks on the map zoom buttons and attribution control are not be captured or forwarded.
-   
+    * Mouse position calculations are incorrect. Mouseover events appear to Vega as if shifted by about 50px.
+      Not sure what causes this, perhaps this is the fact that the Vega div is unattached, thus its
+      internal positioning on the screen is considered at (0,0), whereas map is not?
  */
 
   (function () {
