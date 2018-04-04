@@ -43,6 +43,7 @@ Explanation:
     * Mouse position calculations are incorrect. Mouseover events appear to Vega as if shifted by about 50px.
       Not sure what causes this, perhaps this is the fact that the Vega div is unattached, thus its
       internal positioning on the screen is considered at (0,0), whereas map is not?
+    * If browser's zoom is not 100% when opening this page, map may not allign with the base.
  */
 
   (function () {
