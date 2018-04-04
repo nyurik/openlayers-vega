@@ -34,7 +34,7 @@ Explanation:
   Override Vega's View.Render() method to detect that graph is no longer valid,
   and invalidate the OL's layer with the .changed() call, which in turn
   will request the new copy of canvas.
-  
+
   Attach all event handlers to the map DOM object, and forward them to the Vega graph.
 
   TODO / Unkonwns:
@@ -145,7 +145,7 @@ Explanation:
       };
 
       const eventForwarder = (e) => {
-        console.log(e);
+        console.log('event', e.type, `clientXY=[${e.clientX},${e.clientY}]`);
         if (graphCanvas) {
           const tmpEvt = new e.constructor(e.type, e);
           const dispatchResult = graphCanvas.dispatchEvent(tmpEvt);
@@ -175,6 +175,15 @@ Explanation:
       // ].forEach(
       //   (evt) => map.on(evt, eventForwarder)
       // );
+
+      // layer.on('pointermove', (e) => {
+      //     // ignore during map dragging
+      //     if (e.dragging) {
+      //         return;
+      //     }
+      //
+      //     console.log(e);
+      // });
 
       [
         'keydown',
